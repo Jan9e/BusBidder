@@ -181,3 +181,15 @@
 2026-11-13 10:30:25,460 | WARNING | busbidder.data_loader | offers.csv line 108: 'price_eur' is required
 2026-11-13 10:30:25,460 | WARNING | busbidder.data_loader | offers.csv line 109: offer_id 'BADID-123' does not match OFF-CCC-DDD-MMDD-HHMM
 2026-11-13 10:30:25,460 | INFO    | busbidder.data_loader | loaded 99 offers from /mnt/D/python/busbidder/data/offers.csv; rejected 9 row(s)
+2026-11-13 10:51:04,703 | INFO    | busbidder.data_loader | loaded 5 companies from /mnt/D/python/busbidder/data/companies.csv
+2026-11-13 10:51:04,704 | INFO    | busbidder.data_loader | loaded 15 destinations from /mnt/D/python/busbidder/data/destinations.csv
+2026-11-13 10:51:04,708 | WARNING | busbidder.data_loader | offers.csv line 101: price_eur=-15.0 must be > 0
+2026-11-13 10:51:04,709 | WARNING | busbidder.data_loader | offers.csv line 102: unknown destination 'Atlantis'
+2026-11-13 10:51:04,711 | WARNING | busbidder.data_loader | offers.csv line 103: arrival inconsistent with departure+duration — expected 2026-12-31 20:00, got 2026-12-31 10:00
+2026-11-13 10:51:04,711 | WARNING | busbidder.data_loader | offers.csv line 104: rating=7.5 outside [1.0, 5.0]
+2026-11-13 10:51:04,711 | INFO    | busbidder.data_loader | offers.csv line 105: sold-out offer OFF-NOC-BAR-1231-2330 excluded
+2026-11-13 10:51:04,712 | WARNING | busbidder.data_loader | offers.csv line 106: 'travel_date'='not-a-date' is not YYYY-MM-DD
+2026-11-13 10:51:04,712 | WARNING | busbidder.data_loader | offers.csv line 107: 'company' is required
+2026-11-13 10:51:04,712 | WARNING | busbidder.data_loader | offers.csv line 108: 'price_eur' is required
+2026-11-13 10:51:04,712 | WARNING | busbidder.data_loader | offers.csv line 109: offer_id 'BADID-123' does not match OFF-CCC-DDD-MMDD-HHMM
+2026-11-13 10:51:04,712 | INFO    | busbidder.data_loader | loaded 99 offers from /mnt/D/python/busbidder/data/offers.csv; rejected 9 row(s)
