@@ -1,0 +1,24 @@
+INFO    | busbidder.data_loader | loaded 5 companies from /mnt/D/python/busbidder/data/companies.csv
+INFO    | busbidder.data_loader | loaded 15 destinations from /mnt/D/python/busbidder/data/destinations.csv
+WARNING | busbidder.data_loader | offers.csv line 101: price_eur=-15.0 must be > 0
+WARNING | busbidder.data_loader | offers.csv line 102: unknown destination 'Atlantis'
+WARNING | busbidder.data_loader | offers.csv line 103: arrival inconsistent with departure+duration — expected 2026-12-31 20:00, got 2026-12-31 10:00
+WARNING | busbidder.data_loader | offers.csv line 104: rating=7.5 outside [1.0, 5.0]
+INFO    | busbidder.data_loader | offers.csv line 105: sold-out offer OFF-NOC-BAR-1231-2330 excluded
+WARNING | busbidder.data_loader | offers.csv line 106: 'travel_date'='not-a-date' is not YYYY-MM-DD
+WARNING | busbidder.data_loader | offers.csv line 107: 'company' is required
+WARNING | busbidder.data_loader | offers.csv line 108: 'price_eur' is required
+WARNING | busbidder.data_loader | offers.csv line 109: offer_id 'BADID-123' does not match OFF-CCC-DDD-MMDD-HHMM
+INFO    | busbidder.data_loader | loaded 99 offers from /mnt/D/python/busbidder/data/offers.csv; rejected 9 row(s)
+loaded 5 companies, 15 destinations, 99 offers; rejected 9 row(s)
+  line 101 | InvalidValueError        | line 101: price_eur=-15.0 must be > 0
+  line 102 | UnknownReferenceError    | line 102: unknown destination 'Atlantis'
+  line 103 | InconsistentDataError    | line 103: arrival inconsistent with departure+duration — expected 2026-12-31 20:00, got 2026-12-31 10:00
+  line 104 | InvalidValueError        | line 104: rating=7.5 outside [1.0, 5.0]
+  line 105 | SoldOut                  | available_seats=0 — sold out, not bookable
+  line 106 | InvalidValueError        | line 106: 'travel_date'='not-a-date' is not YYYY-MM-DD
+  line 107 | MissingDataError         | line 107: 'company' is required
+  line 108 | MissingDataError         | line 108: 'price_eur' is required
+  line 109 | InvalidValueError        | line 109: offer_id 'BADID-123' does not match OFF-CCC-DDD-MMDD-HHMM
+
+Rejected by type: {'InvalidValueError': 4, 'UnknownReferenceError': 1, 'InconsistentDataError': 1, 'SoldOut': 1, 'MissingDataError': 2}

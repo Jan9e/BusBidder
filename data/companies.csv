@@ -1,0 +1,6 @@
+name,profile,low_cost,eco_focus
+SolRuta,Low-cost daytime services,True,False
+Camino Express,Fast direct connections between major cities,False,False
+CostaLink,Strong coverage of coastal destinations,False,False
+VerdeBus,"Environment-focused, modern vehicles",False,True
+NocheVia,Overnight and late-evening services,False,False
