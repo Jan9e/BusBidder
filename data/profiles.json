@@ -1,0 +1,54 @@
+{
+  "budget": {
+    "label": "Budget traveller",
+    "description": "Prioritises the lowest fare; flexible on times and ticket rules.",
+    "weights": {"price": 0.65, "duration": 0.15, "departure": 0.10, "flexibility": 0.10, "transfers": 0.0, "rating": 0.0, "emissions": 0.0},
+    "constraints": {
+      "max_budget_eur": 35.0,
+      "max_transfers": 2,
+      "min_luggage_kg": 0,
+      "requires_changeable": false,
+      "preferred_departure": "morning",
+      "max_duration_minutes": null
+    }
+  },
+  "business": {
+    "label": "Business traveller",
+    "description": "Prioritises short journeys and convenient departure; needs flexibility.",
+    "weights": {"price": 0.10, "duration": 0.40, "departure": 0.35, "flexibility": 0.15, "transfers": 0.0, "rating": 0.0, "emissions": 0.0},
+    "constraints": {
+      "max_budget_eur": 70.0,
+      "max_transfers": 0,
+      "min_luggage_kg": 20,
+      "requires_changeable": true,
+      "preferred_departure": "morning",
+      "max_duration_minutes": null
+    }
+  },
+  "flexibility": {
+    "label": "Flexibility-focused tourist",
+    "description": "Prioritises changeable and refundable fares above cost.",
+    "weights": {"price": 0.15, "duration": 0.15, "departure": 0.15, "flexibility": 0.55, "transfers": 0.0, "rating": 0.0, "emissions": 0.0},
+    "constraints": {
+      "max_budget_eur": 60.0,
+      "max_transfers": 1,
+      "min_luggage_kg": 15,
+      "requires_changeable": true,
+      "preferred_departure": "afternoon",
+      "max_duration_minutes": null
+    }
+  },
+  "environment": {
+    "label": "Environment-focused traveller",
+    "description": "Prioritises low-emission options and modern vehicles.",
+    "weights": {"price": 0.20, "duration": 0.15, "departure": 0.10, "flexibility": 0.15, "transfers": 0.0, "rating": 0.0, "emissions": 0.40},
+    "constraints": {
+      "max_budget_eur": 60.0,
+      "max_transfers": 1,
+      "min_luggage_kg": 10,
+      "requires_changeable": false,
+      "preferred_departure": "morning",
+      "max_duration_minutes": null
+    }
+  }
+}
