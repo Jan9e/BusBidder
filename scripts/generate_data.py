@@ -43,7 +43,7 @@ DEPARTURE_WINDOWS = {
     "night":     (23, 24),
 }
 
-TRAVEL_DATES = [date(2026, 7, 12) + timedelta(days=i) for i in range(3)]
+TRAVEL_DATES = [date(2026, 12, 13) + timedelta(days=i) for i in range(3)]
 
 
 def write_csv(path: Path, header: list[str], rows: list[list]) -> None:

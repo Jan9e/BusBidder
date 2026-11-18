@@ -25,8 +25,8 @@ def main() -> None:
     request = TravelRequest(
         origin="Madrid",
         destination="Malaga",
-        window_start=date(2026, 7, 12),
-        window_end=date(2026, 7, 14),
+        window_start=date(2026, 12, 13),
+        window_end=date(2026, 12, 15),
         max_budget_eur=50.0,
         max_transfers=1,
         min_luggage_kg=0,

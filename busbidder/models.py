@@ -181,5 +181,6 @@ class Booking:
         d["offer"]["travel_date"] = self.offer.travel_date.isoformat()
         d["offer"]["departure_time"] = self.offer.departure_time.isoformat()
         d["offer"]["arrival_time"] = self.offer.arrival_time.isoformat()
+        d["offer"]["available_seats"] = self.offer.available_seats  
         d["created_at"] = self.created_at.isoformat()
         return d

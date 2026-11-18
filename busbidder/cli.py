@@ -26,6 +26,62 @@ WEIGHT_KEYS = ("price", "duration", "departure", "flexibility",
                "transfers", "rating", "emissions")
 
 
+def _load_existing_bookings(path: Path) -> dict[str, Booking]:
+    """Read prior bookings from bookings.jsonl (if any).
+
+    Each line is a Booking.to_dict() dump. We rebuild Booking objects
+    and index them by reference so create_booking() can enforce
+    reference uniqueness across sessions.
+    """
+    if not path.exists():
+        return {}
+    from datetime import datetime as _dt
+    bookings: dict[str, Booking] = {}
+    with path.open("r", encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                raw = json.loads(line)
+                offer_raw = raw["offer"]
+                # rebuild minimal objects for the historical record
+                from .models import Company, Destination, FareConditions
+                fare = offer_raw.get("fare") or {}
+                offer = type("_OfferSnapshot", (), {})()  # lightweight shim
+                offer.offer_id = offer_raw["offer_id"]
+                offer.available_seats = offer_raw.get("available_seats", 0)
+                booking = Booking(
+                    reference=raw["reference"],
+                    offer=offer,  # type: ignore[arg-type]
+                    traveller_name=raw["traveller_name"],
+                    created_at=_dt.fromisoformat(raw["created_at"]),
+                    payment_status=raw.get("payment_status", "simulated-paid"),
+                    status=raw.get("status", "confirmed"),
+                )
+                bookings[booking.reference] = booking
+            except (KeyError, ValueError, json.JSONDecodeError):
+                # corrupt historical line — skip rather than crash
+                continue
+    return bookings
+
+
+def _apply_booking_seat_state(bookings: dict[str, Booking],
+                              offers: list) -> None:
+    """Decrement in-memory seat counts to reflect prior bookings.
+
+    The CSV is treated as immutable input, so the loader always returns
+    original seat counts. This function subtracts each historical
+    booking from the matching offer so the CLI shows consistent
+    availability across sessions.
+    """
+    by_id = {o.offer_id: o for o in offers}
+    for b in bookings.values():
+        target = by_id.get(b.offer.offer_id)
+        if target and target.available_seats > 0:
+            target.available_seats -= 1
+
+
 # ---------- prompt helpers ----------
 
 def _prompt(prompt: str, default: str | None = None) -> str:
@@ -152,8 +208,8 @@ def _prompt_weights(defaults: dict) -> Weights:
 
 def _build_request(base_constraints, base_weights, destinations) -> TravelRequest | None:
     destination = _prompt_destination(destinations, default="Malaga")
-    ws = _prompt_date("Travel window start (YYYY-MM-DD)", date(2026, 7, 12))
-    we = _prompt_date("Travel window end (YYYY-MM-DD)",   date(2026, 7, 14))
+    ws = _prompt_date("Travel window start (YYYY-MM-DD)", date(2026, 12, 13))
+    we = _prompt_date("Travel window end (YYYY-MM-DD)",   date(2026, 12, 15))
     budget = _prompt_float("Maximum budget (EUR)",
                            base_constraints.get("max_budget_eur", 50.0), minimum=1.0)
     transfers = _prompt_int("Maximum transfers",
@@ -204,8 +260,8 @@ def _request_from_profile(profile, destinations) -> TravelRequest | None:
             return _build_request(c, w, destinations)
 
         destination = _prompt_destination(destinations, default="Malaga")
-        ws = _prompt_date("Travel window start", date(2026, 7, 12))
-        we = _prompt_date("Travel window end",   date(2026, 7, 14))
+        ws = _prompt_date("Travel window start", date(2026, 12, 13))
+        we = _prompt_date("Travel window end",   date(2026, 12, 15))
 
         req = TravelRequest(
             origin="Madrid", destination=destination,
@@ -262,7 +318,8 @@ def _show_ranked(request: TravelRequest, data: LoadResult,
 
     print(f"\nRanked offers ({len(ranked)}):\n")
     header = (f"{'#':>2}  {'Company':<16} {'Date':<11} {'Dep':^5} "
-              f"{'Dur':>5} {'Price':>7} {'Tr':>3} {'Chg':>3} {'Ref':>3} {'Flx':>4} | {'Total':>6}")
+              f"{'Dur':>5} {'Price':>7} {'Tr':>3} {'Chg':>3} {'Ref':>3} "
+              f"{'Flx':>4} {'Seat':>4} | {'Total':>6}")
     print(header); print("-" * len(header))
     for r in ranked:
         o = r.offer
@@ -271,7 +328,8 @@ def _show_ranked(request: TravelRequest, data: LoadResult,
         print(f"{r.rank:>2}  {o.company.name:<16} {o.travel_date.isoformat():<11} "
               f"{o.departure_time:%H:%M} {o.duration_minutes:>5} "
               f"{o.price_eur:>7.2f} {o.transfers:>3} "
-              f"{chg:>3} {ref:>3} {o.fare.flexibility_score():>4.0f} | {r.total_score:>6.2f}")
+              f"{chg:>3} {ref:>3} {o.fare.flexibility_score():>4.0f} "
+              f"{o.available_seats:>4} | {r.total_score:>6.2f}")
 
     print("\nExplanation for rank 1:")
     print(f"  {explain(ranked[0], ranked)}")
@@ -312,6 +370,7 @@ def _print_confirmation(booking: Booking) -> None:
     print(f"  Fare:         changeable={o.fare.changeable} refundable={o.fare.refundable}")
     print(f"  Transfers:    {o.transfers}")
     print(f"  Luggage:      {o.luggage_kg} kg")
+    print(f"  Seats after:  {o.available_seats} remaining on this offer")
     print(f"  Payment:      {booking.payment_status}")
     print(f"  Status:       {booking.status}")
     print(f"  Created:      {booking.created_at:%Y-%m-%d %H:%M:%S}")
@@ -334,7 +393,12 @@ def main() -> int:
     print("=" * 56)
     print(f"  Loaded: {data.summary()}")
 
-    bookings: dict[str, Booking] = {}
+    bookings = _load_existing_bookings(BOOKINGS_PATH)
+    _apply_booking_seat_state(bookings, data.offers)
+    if bookings:
+        print(f"  Restored {len(bookings)} prior booking(s) from "
+              f"{BOOKINGS_PATH.name}")
+
     profile_keys = list(profiles.keys())
 
     while True:

@@ -2,6 +2,7 @@
   BusBidder Spain
 ========================================================
   Loaded: loaded 5 companies, 15 destinations, 99 offers; rejected 9 row(s)
+  Restored 11 prior booking(s) from bookings.jsonl
 
 How do you want to start?
   1) Budget traveller
@@ -36,7 +37,7 @@ Accept these defaults and continue? (Y/n): Destination:
   13) Toledo
   14) Valencia
   15) Zaragoza
-number: Travel window start [2026-07-12]: Travel window end [2026-07-14]: 
+number: Travel window start [2026-12-13]: Travel window end [2026-12-15]: 
 3 offer(s) pass all hard constraints; 96 filtered out
 
 Rejections by constraint:
@@ -47,32 +48,33 @@ WARNING: 'price' is weighted at 65%, above the 60% guideline — the ranking may
 
 Ranked offers (3):
 
- #  Company          Date         Dep    Dur   Price  Tr Chg Ref  Flx |  Total
-------------------------------------------------------------------------------
- 1  SolRuta          2026-07-13  23:15   224   15.96   0   N   Y   50 |  82.36
- 2  SolRuta          2026-07-13  18:15   197   30.03   0   N   N   20 |  28.67
- 3  NocheVia         2026-07-13  23:30   239   33.11   1   N   Y   50 |  12.00
+ #  Company          Date         Dep    Dur   Price  Tr Chg Ref  Flx Seat |  Total
+-----------------------------------------------------------------------------------
+ 1  SolRuta          2026-12-14  23:15   224   15.96   0   N   Y   50    4 |  82.36
+ 2  SolRuta          2026-12-14  18:15   197   30.03   0   N   N   20   18 |  28.67
+ 3  NocheVia         2026-12-14  23:30   239   33.11   1   N   Y   50   38 |  12.00
 
 Explanation for rank 1:
-  Rank 1 (score 82.36/100): SolRuta departs 23:15 on 2026-07-13; cheapest at EUR 15.96, 27 min longer than the fastest, fully flexible ticket, direct route.
+  Rank 1 (score 82.36/100): SolRuta departs 23:15 on 2026-12-14; cheapest at EUR 15.96, 27 min longer than the fastest, refundable only, direct route.
 
 Book one of these offers? Enter rank number, or 'n' to skip [n]: Traveller name: 
 ========================================================
   BOOKING CONFIRMED
 ========================================================
-  Reference:    BB-3GVQLX
+  Reference:    BB-YZEIJL
   Traveller:    roshan
   Company:      SolRuta
   Route:        Madrid -> Bilbao
-  Date:         2026-07-13  23:15 - 02:59
+  Date:         2026-12-14  23:15 - 02:59
   Duration:     224 min
   Price:        EUR 15.96
   Fare:         changeable=False refundable=True
   Transfers:    0
   Luggage:      15 kg
+  Seats after:  3 remaining on this offer
   Payment:      simulated-paid
   Status:       confirmed
-  Created:      2026-11-13 10:25:27
+  Created:      2026-11-14 11:47:17
 ========================================================
 
 How do you want to start?
@@ -108,7 +110,7 @@ Accept these defaults and continue? (Y/n): Destination:
   13) Toledo
   14) Valencia
   15) Zaragoza
-number: Travel window start [2026-07-12]: Travel window end [2026-07-14]: 
+number: Travel window start [2026-12-13]: Travel window end [2026-12-15]: 
 4 offer(s) pass all hard constraints; 95 filtered out
 
 Rejections by constraint:
@@ -119,33 +121,36 @@ Rejections by constraint:
 
 Ranked offers (4):
 
- #  Company          Date         Dep    Dur   Price  Tr Chg Ref  Flx |  Total
-------------------------------------------------------------------------------
- 1  Camino Express   2026-07-12  13:45   161   43.59   0   Y   Y  100 |  79.98
- 2  Camino Express   2026-07-12  08:15   210   54.03   0   Y   Y  100 |  71.85
- 3  VerdeBus         2026-07-14  09:00   269   39.59   0   Y   N   70 |  40.51
- 4  SolRuta          2026-07-12  23:30   255   27.83   0   Y   N   70 |  22.19
+ #  Company          Date         Dep    Dur   Price  Tr Chg Ref  Flx Seat |  Total
+-----------------------------------------------------------------------------------
+ 1  Camino Express   2026-12-13  13:45   161   43.59   0   Y   Y  100   29 |  79.98
+ 2  Camino Express   2026-12-13  08:15   210   54.03   0   Y   Y  100   33 |  71.85
+ 3  VerdeBus         2026-12-15  09:00   269   39.59   0   Y   N   70   28 |  40.51
+ 4  SolRuta          2026-12-13  23:30   255   27.83   0   Y   N   70   26 |  22.19
 
 Explanation for rank 1:
-  Rank 1 (score 79.98/100): Camino Express departs 13:45 on 2026-07-12; EUR 15.76 above the cheapest, fastest at 161 min, fully flexible ticket, direct route.
+  Rank 1 (score 79.98/100): Camino Express departs 13:45 on 2026-12-13; EUR 15.76 above the cheapest, fastest at 161 min, fully flexible (changeable + refundable), direct route.
+
+Book one of these offers? Enter rank number, or 'n' to skip [n]:   enter a rank number, or 'n'
 
 Book one of these offers? Enter rank number, or 'n' to skip [n]: Traveller name: 
 ========================================================
   BOOKING CONFIRMED
 ========================================================
-  Reference:    BB-X8W4E1
+  Reference:    BB-OBVD8U
   Traveller:    roshan
   Company:      Camino Express
   Route:        Madrid -> Seville
-  Date:         2026-07-12  13:45 - 16:26
+  Date:         2026-12-13  13:45 - 16:26
   Duration:     161 min
   Price:        EUR 43.59
   Fare:         changeable=True refundable=True
   Transfers:    0
   Luggage:      20 kg
+  Seats after:  28 remaining on this offer
   Payment:      simulated-paid
   Status:       confirmed
-  Created:      2026-11-13 10:25:41
+  Created:      2026-11-14 11:47:34
 ========================================================
 
 How do you want to start?
@@ -172,7 +177,7 @@ Choice: Destination:
   13) Toledo
   14) Valencia
   15) Zaragoza
-number: Travel window start (YYYY-MM-DD) [2026-07-12]: Travel window end (YYYY-MM-DD) [2026-07-14]: Maximum budget (EUR) [50]: Maximum transfers [1]: Minimum luggage (kg) [0]: Changeable ticket required? (y/N): Preferred departure window:
+number: Travel window start (YYYY-MM-DD) [2026-12-13]: Travel window end (YYYY-MM-DD) [2026-12-15]: Maximum budget (EUR) [50]: Maximum transfers [1]: Minimum luggage (kg) [0]: Changeable ticket required? (y/N): Preferred departure window:
   1) morning (default)
   2) afternoon
   3) evening
@@ -192,52 +197,53 @@ Rate how much each criterion matters to you.
 
   price       :   duration    :   departure   :   flexibility :   transfers   :   rating      :   emissions   : 
 Your preference weights:
-  price         27.8%  ███████████
-  duration      16.7%  ███████
-  departure     13.9%  ██████
-  flexibility    8.3%  ███
-  transfers     13.9%  ██████
-  rating        13.9%  ██████
-  emissions      5.6%  ██
+  price         20.0%  ████████
+  duration      22.9%  █████████
+  departure     14.3%  ██████
+  flexibility   17.1%  ███████
+  transfers     11.4%  █████
+  rating         8.6%  ███
+  emissions      5.7%  ██
   ──────────────────────────────────────────────────
   total        100.0%
 
 3 offer(s) pass all hard constraints; 96 filtered out
 
 Rejections by constraint:
-  budget           44
+  budget           27
   changeable       19
   destination      92
   transfers        10
 
 Ranked offers (3):
 
- #  Company          Date         Dep    Dur   Price  Tr Chg Ref  Flx |  Total
-------------------------------------------------------------------------------
- 1  SolRuta          2026-07-12  23:30   301   28.04   0   Y   Y  100 |  54.97
- 2  VerdeBus         2026-07-13  20:45   268   39.45   0   Y   N   70 |  54.86
- 3  VerdeBus         2026-07-12  23:30   306   33.72   0   Y   N   70 |  49.34
+ #  Company          Date         Dep    Dur   Price  Tr Chg Ref  Flx Seat |  Total
+-----------------------------------------------------------------------------------
+ 1  VerdeBus         2026-12-14  20:45   268   39.45   0   Y   N   70   23 |  55.00
+ 2  SolRuta          2026-12-13  23:30   301   28.04   0   Y   Y  100   24 |  54.44
+ 3  VerdeBus         2026-12-13  23:30   306   33.72   0   Y   N   70   31 |  37.87
 
 Explanation for rank 1:
-  Rank 1 (score 54.97/100): SolRuta departs 23:30 on 2026-07-12; cheapest at EUR 28.04, 33 min longer than the fastest, fully flexible ticket, direct route.
+  Rank 1 (score 55.00/100): VerdeBus departs 20:45 on 2026-12-14; EUR 11.41 above the cheapest, fastest at 268 min, changeable, direct route.
 
 Book one of these offers? Enter rank number, or 'n' to skip [n]: Traveller name: 
 ========================================================
   BOOKING CONFIRMED
 ========================================================
-  Reference:    BB-EHCK4C
+  Reference:    BB-1J1OZC
   Traveller:    roshan
-  Company:      SolRuta
+  Company:      VerdeBus
   Route:        Madrid -> Valencia
-  Date:         2026-07-12  23:30 - 04:31
-  Duration:     301 min
-  Price:        EUR 28.04
-  Fare:         changeable=True refundable=True
+  Date:         2026-12-14  20:45 - 01:13
+  Duration:     268 min
+  Price:        EUR 39.45
+  Fare:         changeable=True refundable=False
   Transfers:    0
-  Luggage:      23 kg
+  Luggage:      10 kg
+  Seats after:  22 remaining on this offer
   Payment:      simulated-paid
   Status:       confirmed
-  Created:      2026-11-13 10:26:54
+  Created:      2026-11-14 11:48:17
 ========================================================
 
 How do you want to start?
@@ -248,4 +254,4 @@ How do you want to start?
   5) Custom request
   0) Quit
 
-Choice: 
+Choice: Goodbye.

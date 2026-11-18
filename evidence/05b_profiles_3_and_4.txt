@@ -1,0 +1,165 @@
+========================================================
+  BusBidder Spain
+========================================================
+  Loaded: loaded 5 companies, 15 destinations, 99 offers; rejected 9 row(s)
+  Restored 15 prior booking(s) from bookings.jsonl
+
+How do you want to start?
+  1) Budget traveller
+  2) Business traveller
+  3) Flexibility-focused tourist
+  4) Environment-focused traveller
+  5) Custom request
+  0) Quit
+
+Choice: 
+Profile: Flexibility-focused tourist
+  Prioritises changeable and refundable fares above cost.
+  Max budget: EUR 60.00
+  Max transfers: 1
+  Luggage >= 15 kg
+  Changeable required: True
+  Preferred departure: afternoon
+  Weights: price=0.15 duration=0.15 departure=0.15 flexibility=0.55
+Accept these defaults and continue? (Y/n): Destination:
+  1) Alicante
+  2) Barcelona
+  3) Bilbao
+  4) Cadiz
+  5) Cordoba
+  6) Granada
+  7) Malaga (default)
+  8) Murcia
+  9) Salamanca
+  10) San Sebastian
+  11) Santiago de Compostela
+  12) Seville
+  13) Toledo
+  14) Valencia
+  15) Zaragoza
+number: Travel window start [2026-12-13]: Travel window end [2026-12-15]: 
+5 offer(s) pass all hard constraints; 94 filtered out
+
+Rejections by constraint:
+  changeable       19
+  destination      92
+  luggage          26
+  transfers        10
+
+Ranked offers (5):
+
+ #  Company          Date         Dep    Dur   Price  Tr Chg Ref  Flx Seat |  Total
+-----------------------------------------------------------------------------------
+ 1  Camino Express   2026-12-13  19:00   202   43.86   0   Y   Y  100    7 |  86.22
+ 2  Camino Express   2026-12-15  16:45   203   59.62   0   Y   Y  100   10 |  84.85
+ 3  CostaLink        2026-12-14  23:00   303   26.88   0   Y   Y  100   20 |  73.00
+ 4  CostaLink        2026-12-14  20:30   236   32.61   0   Y   N   70   14 |  31.33
+ 5  VerdeBus         2026-12-14  23:15   303   39.51   0   Y   N   70    6 |  12.21
+
+Explanation for rank 1:
+  Rank 1 (score 86.22/100): Camino Express departs 19:00 on 2026-12-13; EUR 16.98 above the cheapest, fastest at 202 min, fully flexible (changeable + refundable), direct route.
+
+Book one of these offers? Enter rank number, or 'n' to skip [n]: Traveller name: 
+========================================================
+  BOOKING CONFIRMED
+========================================================
+  Reference:    BB-7CW9H3
+  Traveller:    Roshan
+  Company:      Camino Express
+  Route:        Madrid -> Malaga
+  Date:         2026-12-13  19:00 - 22:22
+  Duration:     202 min
+  Price:        EUR 43.86
+  Fare:         changeable=True refundable=True
+  Transfers:    0
+  Luggage:      20 kg
+  Seats after:  6 remaining on this offer
+  Payment:      simulated-paid
+  Status:       confirmed
+  Created:      2026-11-17 18:12:25
+========================================================
+
+How do you want to start?
+  1) Budget traveller
+  2) Business traveller
+  3) Flexibility-focused tourist
+  4) Environment-focused traveller
+  5) Custom request
+  0) Quit
+
+Choice: 
+Profile: Environment-focused traveller
+  Prioritises low-emission options and modern vehicles.
+  Max budget: EUR 60.00
+  Max transfers: 1
+  Luggage >= 10 kg
+  Changeable required: False
+  Preferred departure: morning
+  Weights: price=0.20 duration=0.15 departure=0.10 flexibility=0.15 emissions=0.40
+Accept these defaults and continue? (Y/n): Destination:
+  1) Alicante
+  2) Barcelona
+  3) Bilbao
+  4) Cadiz
+  5) Cordoba
+  6) Granada
+  7) Malaga (default)
+  8) Murcia
+  9) Salamanca
+  10) San Sebastian
+  11) Santiago de Compostela
+  12) Seville
+  13) Toledo
+  14) Valencia
+  15) Zaragoza
+number: Travel window start [2026-12-13]: Travel window end [2026-12-15]: 
+7 offer(s) pass all hard constraints; 92 filtered out
+
+Rejections by constraint:
+  destination      92
+  transfers        10
+
+Ranked offers (7):
+
+ #  Company          Date         Dep    Dur   Price  Tr Chg Ref  Flx Seat |  Total
+-----------------------------------------------------------------------------------
+ 1  Camino Express   2026-12-13  19:00   202   43.86   0   Y   Y  100    6 |  71.22
+ 2  Camino Express   2026-12-15  16:45   203   59.62   0   Y   Y  100   10 |  65.12
+ 3  VerdeBus         2026-12-14  23:15   303   39.51   0   Y   N   70    6 |  63.66
+ 4  SolRuta          2026-12-15  17:15   230   26.93   1   N   N   20   17 |  58.27
+ 5  CostaLink        2026-12-14  20:30   236   32.61   0   Y   N   70   14 |  57.66
+ 6  CostaLink        2026-12-14  23:00   303   26.88   0   Y   Y  100   20 |  37.00
+ 7  NocheVia         2026-12-14  23:30   284   41.03   1   Y   Y  100   32 |  36.71
+
+Explanation for rank 1:
+  Rank 1 (score 71.22/100): Camino Express departs 19:00 on 2026-12-13; EUR 16.98 above the cheapest, fastest at 202 min, fully flexible (changeable + refundable), direct route.
+
+Book one of these offers? Enter rank number, or 'n' to skip [n]: Traveller name: 
+========================================================
+  BOOKING CONFIRMED
+========================================================
+  Reference:    BB-RTRITY
+  Traveller:    Roshan
+  Company:      Camino Express
+  Route:        Madrid -> Malaga
+  Date:         2026-12-13  19:00 - 22:22
+  Duration:     202 min
+  Price:        EUR 43.86
+  Fare:         changeable=True refundable=True
+  Transfers:    0
+  Luggage:      20 kg
+  Seats after:  5 remaining on this offer
+  Payment:      simulated-paid
+  Status:       confirmed
+  Created:      2026-11-17 18:12:52
+========================================================
+
+How do you want to start?
+  1) Budget traveller
+  2) Business traveller
+  3) Flexibility-focused tourist
+  4) Environment-focused traveller
+  5) Custom request
+  0) Quit
+
+Choice: 
